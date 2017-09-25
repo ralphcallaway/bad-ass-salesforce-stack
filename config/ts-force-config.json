@@ -2,6 +2,6 @@
   "auth": {
     "username": "scratch"
   },
-  "sObjects": ["Todo__c"],
+  "sObjects": ["Account"],
   "outPath": "./src/generated/sobs.ts"
 }
