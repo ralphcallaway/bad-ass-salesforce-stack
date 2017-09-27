@@ -1,14 +1,14 @@
 {
-  "name": "bad-ass-salesforce-stack",
+  "name": "my-bass-app",
   "version": "0.1.0",
-  "description": "React, Redux, Typescript, antd, ts-force, sfdx starter",
-  "author": "Charlie Jonas",
+  "description": "",
+  "author": "",
   "homepage": "",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ChuckJonas/bad-ass-salesforce-stack.git"
+    "url": ""
   },
-  "bugs": "https://github.com/ChuckJonas/bad-ass-salesforce-stack/issues",
+  "bugs": "",
   "license": "MIT",
   "main": "dist/app.js",
   "scripts": {
