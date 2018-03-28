@@ -1,5 +1,6 @@
 // entry to allow for HMR.
 //  DON'T TOUCH THIS UNLESS YOU KNOW WHAT YOURE DOING
+import * as queryString from "query-string";
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { AppContainer } from "react-hot-loader";
@@ -11,7 +12,6 @@ import { App } from "./app";
 // globals. set on page window
 declare var __RESTHOST__: string;
 declare var __ACCESSTOKEN__: string;
-declare var __ACCOUNTID__: string;
 
 // Rest.config = {
 //   accessToken: __ACCESSTOKEN__,
@@ -21,10 +21,14 @@ declare var __ACCOUNTID__: string;
 
 // const store = createGlobalStore();
 
+// load url params
+const params = queryString.parse(location.search);
+const id = params.id || "";
+
 ReactDOM.render(
     <AppContainer>
       {/* <Provider store={store}> */}
-        <App />
+        <App id={id}/>
       {/* </Provider> */}
     </AppContainer>
     ,

@@ -1,4 +1,4 @@
 import * as React from "react";
-export const App = () => {
-    return <h1>Hello, World!</h1>;
+export const App = (props) => {
+    return <h1>Hello, World! Id: {props.id}</h1>;
 };
