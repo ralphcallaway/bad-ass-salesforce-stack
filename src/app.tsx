@@ -1,6 +1,7 @@
-import * as React from "react";
+// tslint:disable-next-line:no-implicit-dependencies
 import { Opportunity } from "@src/generated/sobs";
 import { Affix, Col, Icon, Layout, Row, Spin } from "antd";
+import * as React from "react";
 
 interface Props {
     id: string;
@@ -28,25 +29,26 @@ export class App extends React.Component<Props, State> {
         this.state = { oppName: "Loading", isLoading: true, touchCount: 0 };
     }
 
-    async componentDidMount() {
+    public async componentDidMount() {
         try {
-            const oppRetrieve = await Opportunity.retrieve(`SELECT Name, Touches__c FROM Opportunity WHERE Id = '${this.props.id}'`);
+            const oppRetrieve = await Opportunity.retrieve(
+                `SELECT Name, Touches__c FROM Opportunity WHERE Id = '${this.props.id}'`);
             if (oppRetrieve.length > 0) {
                 this.setState({
                     isLoading: false,
                     touchCount: oppRetrieve[0].touches,
-                    oppName: oppRetrieve[0].name
+                    oppName: oppRetrieve[0].name,
                 });
             } else {
                 this.setState({
                     isLoading: false,
-                    oppName: `Couldn't find opportunity with id ${this.props.id}`
-                })
+                    oppName: `Couldn't find opportunity with id ${this.props.id}`,
+                });
             }
         } catch (err) {
             this.setState({
                 isLoading: false,
-                oppName: `Error loading opportunity "${err}"`
+                oppName: `Error loading opportunity "${err}"`,
             });
         }
     }
