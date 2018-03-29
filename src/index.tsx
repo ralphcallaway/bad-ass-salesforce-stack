@@ -5,7 +5,7 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { AppContainer } from "react-hot-loader";
 // import { Provider } from "react-redux";
-// import { Rest } from "ts-force";
+import { Rest } from "ts-force";
 import { App } from "./app";
 // import createGlobalStore from "./store";
 
@@ -13,11 +13,10 @@ import { App } from "./app";
 declare var __RESTHOST__: string;
 declare var __ACCESSTOKEN__: string;
 
-// Rest.config = {
-//   accessToken: __ACCESSTOKEN__,
-//   instanceUrl:  __RESTHOST__,
-//   version: 40,
-// };
+Rest.config = {
+  accessToken: __ACCESSTOKEN__,
+  instanceUrl:  __RESTHOST__,
+};
 
 // const store = createGlobalStore();
 
