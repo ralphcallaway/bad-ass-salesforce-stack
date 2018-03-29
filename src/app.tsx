@@ -1,5 +1,6 @@
 import * as React from "react";
 import { Opportunity } from "@src/generated/sobs";
+import { Affix, Col, Icon, Layout, Row, Spin } from "antd";
 
 interface Props {
     id: string;
@@ -11,10 +12,20 @@ interface State {
     touchCount: number;
 }
 
+const loadingIndicator = (
+    <Affix offsetTop={300}>
+        <Row type="flex" justify="center">
+            <Col span={1}>
+                <Icon spin={true} style={{ fontSize: 56 }} type="loading" />
+            </Col>
+        </Row>
+    </Affix>
+);
+
 export class App extends React.Component<Props, State> {
     constructor(props) {
         super(props);
-        this.state = { oppName: "", isLoading: true, touchCount: 0 };
+        this.state = { oppName: "Loading", isLoading: true, touchCount: 0 };
     }
 
     async componentDidMount() {
@@ -42,12 +53,19 @@ export class App extends React.Component<Props, State> {
 
     public render() {
         return (
-            <div>
-                <h1>Hello, World! Id: {this.props.id}</h1>
-                <span>Name: "{this.state.oppName}"</span><br/>
-                <span>Loading: "{this.state.isLoading ? 'Loading' : 'Not Loading'}"</span><br/>
-                <span>Touch Count: "{this.state.touchCount}"</span>
-            </div >
+            <Layout>
+                <Spin indicator={loadingIndicator} spinning={this.state.isLoading}>
+                    <Layout.Header>
+                        <h1>Opportunity Toucher: "{this.state.oppName}"</h1>
+                    </Layout.Header>
+                    <Layout.Content>
+                        Touches: {this.state.touchCount}
+                    </Layout.Content>
+                    <Layout.Footer>
+                        Button Here
+                    </Layout.Footer>
+                </Spin>
+            </Layout>
         );
     }
 }
